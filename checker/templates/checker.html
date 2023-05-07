@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+    <link type="text/css" href="{% static 'checker/css/checker.css' %}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <body>
+    <main>
+        <div class="content">
+            <form class="form" action="{% url 'sendAnswers' %}" method="POST">
+                <input type="text" name="variants" value="{{ variants }}" hidden>
+                <input type="text" name="translations" value="{{ all_translations }}" hidden>
+                {% for source, variants in tasks %}
+                    <section class="form__task">
+                        <div class="variant-info">
+                            <div class="variant-info__number">
+                                <span>{{ forloop.counter }}/20</span>
+                            </div>
+                            <div class="variant-info__current-word">
+                                <span>Текущее слово:</span><br>
+                                <h2>{{ source.0 }}</h2>
+                            </div>
+                        </div>
+                        <div class="variants-list">
+                            <span>Выберите вариант:</span>
+                            <div class="variants">
+                                {% for var in variants %}
+                                    <div class="variant">
+                                        <input type="radio" id="{{ source.0 }}__{{ var.0 }}" name="variant{{ forloop.parentloop.counter }}"
+                                               value="{{ source.1 }}__{{ var.1 }}">
+                                        <label for="{{ source.0 }}__{{ var.0 }}">{{ var.1 }}</label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+{#                        <div class="correct-variant">#}
+{#                            <h3>Правильное слово: Четыре</h3>#}
+{#                        </div>#}
+                    </section>
+                {% endfor %}
+                <div class="submit">
+                    <input type="submit" value="Отправить">
+                </div>
+            </form>
+        </div>
+    </main>
+    </body>
+{% endblock %}
+</html>

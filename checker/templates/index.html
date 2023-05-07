@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+    <link type="text/css" href="{% static 'checker/css/index.css' %}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <body>
+    <main>
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="greeting">
+            <h2>Добро пожаловать на сайт “Чек май тренслейт”.
+            Здесь ты можешь загрузить документ формата docx, в котором слова записаны в формате “слово1” - “слово2” (без
+            кавычек)</h2>
+                </div>
+                <div class="document-downloader">
+                    <div class="document-downloader__text">
+                        <span>Загрузи документ</span>
+                    </div>
+                    <div class="document-downloader__download">
+                        <form action="{% url 'checker' %}" method="POST" enctype="multipart/form-data">
+                            <div class="file-form">
+                                {% csrf_token %}
+                                {{ form }}
+                            </div>
+                            <input type="submit" value="Загрузить">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+{% endblock %}
+</html>

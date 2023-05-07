@@ -1,0 +1,83 @@
+:root {
+    --main-fz: 1.1em;
+}
+
+* {
+    font-family: Inter, sans-serif;
+}
+
+h2 {
+    margin: 0.5em;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: grid;
+    grid-row-gap: 4em;
+    padding: 1.5em;
+    background-color: #d4e6ee;
+    border-radius: 5px;
+}
+
+section {
+    background-color: #809DB2;
+    padding: 1em;
+    border-radius: 5px;
+    width: 1024px;
+}
+
+section .variant-info {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.variant-info__current-word {
+    text-align: center;
+    width: 80%;
+}
+
+.variant-info__current-word h2 {
+    color: #ffffff;
+}
+
+section .variant-info span {
+    font-size: var(--main-fz);
+}
+
+div.variants-list {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    font-size: var(--main-fz);
+    margin-top: 1em;
+}
+
+.variants {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit {
+    text-align: right;
+}
+
+.submit input {
+    padding: 1em 1.5em;
+    background-color: #00363a;
+    border-radius: 10px;
+    color: #ffffff;
+    width: 10em;
+}
+
+.submit input:hover {
+    background-color: #1b1b1b;
+    color: #cccccc;
+}
+
+section.form__task .correct-variant {
+    display: flex;
+    justify-content: center;
+}
